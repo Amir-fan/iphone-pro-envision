@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Cpu, 
@@ -7,7 +6,8 @@ import {
   Camera, 
   Wifi, 
   Video,
-  Smartphone
+  Smartphone,
+  Apple
 } from 'lucide-react';
 
 import Navbar from '@/components/Navbar';
@@ -21,7 +21,6 @@ import CameraSection from '@/components/CameraSection';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 
-// Define color options
 const colorOptions = [
   { name: 'titanium', color: 'Titanium', bgClass: 'bg-apple-titanium' },
   { name: 'natural', color: 'Natural Titanium', bgClass: 'bg-apple-natural' },
@@ -29,7 +28,6 @@ const colorOptions = [
   { name: 'blue', color: 'Blue Titanium', bgClass: 'bg-blue-800' },
 ];
 
-// Define specs for the specs section
 const phoneSpecs = [
   {
     title: "Display",
@@ -66,7 +64,6 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    // Simulate loading for a better experience
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -89,7 +86,6 @@ const Index = () => {
     <div className="bg-apple-black text-apple-white">
       <Navbar />
       
-      {/* Hero Section */}
       <section id="hero" className="apple-section pt-24 h-screen flex items-center justify-center">
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col items-center">
@@ -123,13 +119,11 @@ const Index = () => {
             </ScrollReveal>
           </div>
         </div>
-        {/* Background gradient effect */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-apple-blue/20 rounded-full blur-[100px]"></div>
         </div>
       </section>
       
-      {/* Features Section */}
       <ParallaxSection id="features" className="apple-section">
         <div className="container mx-auto relative z-10">
           <ScrollReveal>
@@ -177,17 +171,14 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Background gradient effect */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-700/10 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-1/4 right-1/4 transform translate-x-1/2 translate-y-1/2 w-[300px] h-[300px] bg-apple-blue/10 rounded-full blur-[120px]"></div>
         </div>
       </ParallaxSection>
       
-      {/* Camera Section */}
       <CameraSection />
       
-      {/* Video Experience */}
       <ParallaxSection className="apple-section">
         <div className="container mx-auto relative z-10">
           <ScrollReveal>
@@ -213,7 +204,6 @@ const Index = () => {
               
               <div className="absolute inset-0 bg-gradient-to-r from-apple-blue/30 to-purple-600/30"></div>
               
-              {/* Mock video thumbnail */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-full h-full bg-gradient-to-br from-blue-900/40 to-purple-900/40"></div>
               </div>
@@ -243,7 +233,6 @@ const Index = () => {
         </div>
       </ParallaxSection>
       
-      {/* Specs Section */}
       <section id="specs" className="apple-section py-16 bg-apple-darkgray">
         <div className="container mx-auto">
           <ScrollReveal>
@@ -263,7 +252,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Buy Section */}
       <section id="buy" className="apple-section">
         <div className="container mx-auto text-center">
           <ScrollReveal>
