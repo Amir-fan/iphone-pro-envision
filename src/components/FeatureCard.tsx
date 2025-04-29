@@ -24,7 +24,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           entry.target.classList.add('revealed');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
     
     if (cardRef.current) {
       observer.observe(cardRef.current);
@@ -41,15 +41,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
     <div 
       ref={cardRef}
       className={cn(
-        'reveal-animation bg-apple-darkgray rounded-3xl p-8 flex flex-col items-center text-center transition-transform hover:translate-y-[-5px] cursor-default',
+        'opacity-0 translate-y-[30px] transition-all duration-1000 bg-apple-darkgray/80 backdrop-blur-md rounded-3xl p-8 flex flex-col items-center text-center hover:scale-[1.03] hover:shadow-lg hover:shadow-apple-blue/10 cursor-default border border-white/5',
         className
       )}
     >
-      <div className="mb-4 text-apple-blue">
+      <div className="mb-6 text-apple-blue bg-apple-blue/10 p-4 rounded-full">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-apple-gray">{description}</p>
+      <h3 className="text-xl font-semibold mb-3">{title}</h3>
+      <p className="text-apple-gray text-base leading-relaxed">{description}</p>
     </div>
   );
 };

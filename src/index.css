@@ -44,10 +44,12 @@
 
   body {
     @apply bg-apple-black text-apple-white overflow-x-hidden font-sf;
-    /* Apple-like scrolling behavior */
+    /* Premium Apple-like scrolling behavior */
     scroll-behavior: smooth;
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Hide scrollbar */
@@ -73,7 +75,7 @@
 
 @layer components {
   .apple-section {
-    @apply min-h-screen relative flex flex-col justify-center items-center py-20 px-4 snap-start;
+    @apply min-h-screen relative flex flex-col justify-center items-center py-24 md:py-32 px-6 snap-start;
   }
 
   .apple-heading {
@@ -85,14 +87,43 @@
   }
 
   .apple-btn {
-    @apply bg-apple-blue text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-all;
+    @apply bg-apple-blue text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition-all font-medium;
   }
 
-  .reveal-animation {
-    @apply opacity-0 translate-y-8 transition-all duration-1000;
+  .revealed {
+    @apply opacity-100 translate-x-0 translate-y-0;
   }
+}
 
-  .reveal-animation.revealed {
-    @apply opacity-100 translate-y-0;
-  }
+/* Premium hover interactions */
+.premium-card {
+  @apply transition-all duration-500;
+}
+
+.premium-card:hover {
+  @apply transform scale-[1.03] shadow-lg;
+}
+
+/* Blur effects for premium look */
+.premium-blur {
+  @apply backdrop-blur-xl bg-black/30;
+}
+
+/* Gradient text */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-apple-blue to-purple-500;
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
 }

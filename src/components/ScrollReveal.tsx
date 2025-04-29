@@ -5,12 +5,14 @@ interface ScrollRevealProps {
   children: ReactNode;
   delay?: number;
   className?: string;
+  direction?: 'up' | 'down' | 'left' | 'right';
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({ 
   children, 
   delay = 0,
-  className = ""
+  className = "",
+  direction = 'up'
 }) => {
   const elementRef = useRef<HTMLDivElement>(null);
   
@@ -24,8 +26,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         }
       });
     }, { 
-      threshold: 0.2,
-      rootMargin: '0px 0px -10% 0px' // Trigger slightly before element is fully visible
+      threshold: 0.15,
+      rootMargin: '0px 0px -5% 0px' // Trigger slightly earlier for smoother appearance
     });
     
     if (elementRef.current) {
@@ -39,13 +41,23 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     };
   }, [delay]);
   
+  const getTransformClass = () => {
+    switch(direction) {
+      case 'down': return 'translate-y-[-30px]';
+      case 'left': return 'translate-x-[30px]';
+      case 'right': return 'translate-x-[-30px]';
+      case 'up': 
+      default: return 'translate-y-[30px]';
+    }
+  };
+  
   return (
     <div 
       ref={elementRef} 
-      className={`reveal-animation ${className}`}
+      className={`opacity-0 ${getTransformClass()} transition-all duration-[1200ms] ${className}`}
       style={{ 
         transitionDelay: `${delay}ms`,
-        transitionTimingFunction: 'cubic-bezier(0.215, 0.61, 0.355, 1)' // Apple-like easing
+        transitionTimingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1)' // Premium Apple-like easing
       }}
     >
       {children}

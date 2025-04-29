@@ -6,13 +6,15 @@ interface ParallaxSectionProps {
   speed?: number;
   className?: string;
   id?: string;
+  bgColor?: string;
 }
 
 const ParallaxSection: React.FC<ParallaxSectionProps> = ({ 
   children, 
-  speed = 0.3,
+  speed = 0.2,
   className = "",
-  id
+  id,
+  bgColor
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -25,14 +27,14 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       
-      // Check if section is in view
+      // Only apply parallax when section is in viewport
       if (rect.top < windowHeight && rect.bottom > 0) {
         const offset = (scrollPosition - (rect.top + scrollPosition - windowHeight / 2)) * speed;
         contentRef.current.style.transform = `translateY(${offset}px)`;
       }
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initialize position
     
     return () => {
@@ -40,9 +42,16 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     };
   }, [speed]);
   
+  const bgStyle = bgColor ? { backgroundColor: bgColor } : {};
+  
   return (
-    <div ref={sectionRef} className={`relative overflow-hidden snap-center ${className}`} id={id}>
-      <div ref={contentRef} className="transition-transform duration-300 ease-out">
+    <div 
+      ref={sectionRef} 
+      className={`relative overflow-hidden snap-center min-h-screen ${className}`} 
+      id={id}
+      style={bgStyle}
+    >
+      <div ref={contentRef} className="transition-transform duration-500 ease-out w-full h-full">
         {children}
       </div>
     </div>
