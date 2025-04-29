@@ -83,10 +83,10 @@ const Index = () => {
   }
   
   return (
-    <div className="bg-apple-black text-apple-white">
+    <div className="bg-apple-black text-apple-white snap-container">
       <Navbar />
       
-      <section id="hero" className="apple-section pt-24 h-screen flex items-center justify-center">
+      <section id="hero" className="apple-section pt-24 h-screen flex items-center justify-center snap-start">
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col items-center">
             <ScrollReveal>
@@ -233,7 +233,7 @@ const Index = () => {
         </div>
       </ParallaxSection>
       
-      <section id="specs" className="apple-section py-16 bg-apple-darkgray">
+      <section id="specs" className="apple-section py-16 bg-apple-darkgray snap-start">
         <div className="container mx-auto">
           <ScrollReveal>
             <h2 className="apple-heading text-center mb-6">
@@ -252,7 +252,7 @@ const Index = () => {
         </div>
       </section>
       
-      <section id="buy" className="apple-section">
+      <section id="buy" className="apple-section snap-start">
         <div className="container mx-auto text-center">
           <ScrollReveal>
             <h2 className="apple-heading mb-6">

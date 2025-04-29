@@ -41,7 +41,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   }, [speed]);
   
   return (
-    <div ref={sectionRef} className={`relative overflow-hidden ${className}`} id={id}>
+    <div ref={sectionRef} className={`relative overflow-hidden snap-center ${className}`} id={id}>
       <div ref={contentRef} className="transition-transform duration-300 ease-out">
         {children}
       </div>
